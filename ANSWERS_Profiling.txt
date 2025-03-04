@@ -1,0 +1,22 @@
+a. Investigate the performance of the matmult.py script
+In which line(s) of the script would you start optimizing for speed?
+
+Since it is a multiplication of large matrices, from scalene it shows that it is from line 27: " result[i][j] += X[i][k] * Y[k][j]" where the multiplication is being done.
+
+
+b. Investigate the performance of the euler72.py script
+In which line(s) of the script would you start optimizing for speed? (This is one problem from the euler project: https://projecteuler.net/problem=72)
+
+By using line_profiler I noticed:
+
+Line 52: factors = factorize(n,primes), which takes 89.4% of the total execution time.(fast_phi function) 
+Line 26: while(n%p == 0): inside factorize(n, primes), which takes 30.7% of its execution time. (factorize function)
+Line 29: if(p > sqrt(n)): inside factorize(n, primes), which takes 26.6% of its execution time. (factorize function)
+
+
+c. Improve the performance of the matmult.py script
+What is the best performance that you achieved with N=250?
+
+I used numpy to make it easier instead of the three for loops.
+
+The new performance is 590 ms, the baseline is 1.95 s which is 3.31 times faster
